@@ -1,5 +1,25 @@
 <div class="container mt-4 text-center">
   <h1 class="mb-4">Lista de Usuarios</h1>
+
+  <div class="mb-3">
+    <label for="campoFiltro" class="form-label">Seleccionar Campo</label>
+    <select class="form-select" id="campoFiltro" [(ngModel)]="selectedOption" (ngModelChange)="onOptionChange()">
+      <option value="">Seleccione una opcion</option>
+      <option value="name">Nombre</option>
+      <option value="lastname">Apellido</option>
+      <option value="document_type">Tipo de Documento</option>
+      <option value="document">Documento</option>
+      <option value="email">Correo Electronico</option>
+      <option value="phone">Telefono</option>
+      <option value="country">Pais</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="filtroTexto" class="form-label">Filtro de Texto</label>
+    <input placeholder="Escriba el criterio a buscar" type="text" class="form-control" id="filtroTexto" [(ngModel)]="inputValue" (ngModelChange)="onInputChange()">
+  </div>
+
   <table class="table table-bordered mx-auto">
     <thead class="thead-dark">
       <tr>
@@ -14,25 +34,28 @@
       </tr>
     </thead>
     <tbody>
-      
+      <tr *ngFor="let item of data">
+        <th scope="row"> {{item.id}} </th>
+        <td> {{item.name}} </td>
+        <td> {{item.lastname}} </td>
+        <td> {{item.document_type}} </td>
+        <td> {{item.document}} </td>
+        <td> {{item.email}} </td>
+        <td> {{item.phone}} </td>
+        <td> {{item.country}} </td>
+      </tr>     
     </tbody>
   </table>
   <nav aria-label="...">
     <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      <li class="page-item active" id="0" data="0">
+        <a (click)="paginator('0')" class="page-link" href="#">1</a>
       </li>
-      <li class="page-item">
-        <a class="page-link" href="#">1</a>
+      <li class="page-item" id="1" data="1">
+        <a (click)="paginator('1')" class="page-link" href="#">2</a>
       </li>
-      <li class="page-item active">
-        <a class="page-link" href="#">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">3</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+      <li class="page-item" id="2" data="2">
+        <a (click)="paginator('2')" class="page-link" href="#">3</a>
       </li>
     </ul>
   </nav>
