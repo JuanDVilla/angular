@@ -9,8 +9,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  public getData(page: any, fieldFilter: any, filter: any): Observable<any>{
-    const urlApi = 'http://localhost/Prueba/test_module/web/API/formulario/?page=' + page + '&fieldFilter=' + fieldFilter + '&filter=' + filter
+  public getData(fieldFilter: any, filter: any, amount: any, actualPage: any): Observable<any>{
+    const urlApi = 'http://localhost/Prueba/test_module/web/API/formulario/?fieldFilter=' + fieldFilter + '&filter=' + filter + '&amount=' + amount + '&actualPage=' + actualPage
     return this.http.get<any>(urlApi);
   }
 }
