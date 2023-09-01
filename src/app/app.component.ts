@@ -5,7 +5,8 @@ import { ApiService } from './service/api.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ApiService]
 })
 
 
@@ -77,7 +78,7 @@ export class AppComponent {
     this.apiService.getData(fieldFilter, filter, amount, actualPage).subscribe(data => {
 
       this.data = data[0];
-      this.info = data[1];
+      this.info = data[1];     
 
       const previusElement = document.getElementById('previus');
       const nextElement = document.getElementById('next');
